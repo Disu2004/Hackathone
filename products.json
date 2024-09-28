@@ -1,0 +1,42 @@
+[
+  {
+      "title": "Personalized Mug",
+      "description": "A custom mug with the recipient's name.",
+      "image": "https://images.pexels.com/photos/704813/pexels-photo-704813.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "age": "all",
+      "occasion": "Birthday",
+      "gender": "Male"
+  },
+  {
+      "title": "Handmade Bracelet",
+      "description": "A beautiful handmade bracelet.",
+      "image": "https://images.pexels.com/photos/265906/pexels-photo-265906.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "age": "teen",
+      "occasion": "Birthday",
+      "gender": "Female"
+  },
+  {
+      "title": "Tech Gadget",
+      "description": "Latest gadget for tech enthusiasts.",
+      "image": "https://images.pexels.com/photos/682933/pexels-photo-682933.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "age": "adult",
+      "occasion": "Graduation",
+      "gender": "Male"
+  },
+  {
+      "title": "Flower Bouquet",
+      "description": "A lovely bouquet of flowers for any occasion.",
+      "image": "https://images.pexels.com/photos/931168/pexels-photo-931168.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "age": "all",
+      "occasion": "Anniversary",
+      "gender": "Female"
+  },
+  {
+      "title": "Book Set",
+      "description": "A collection of best-selling books.",
+      "image": "https://images.pexels.com/photos/159866/books-book-pages-read-literature-159866.jpeg?auto=compress&cs=tinysrgb&w=600",
+      "age": "adult",
+      "occasion": "Festival",
+      "gender": "all"
+  }
+]

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Items</title>
+    <link href="./CSS/suggestions.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/index.css">
+</head>
+<body>
+    
+    <h1>Cart Items</h1>
+
+    <table id="cartTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Image</th>
+                <th>Rating</th>
+                <th>Gift Type</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+    </table>
+
+    <script>
+        // Fetch cart items from the backend
+        async function fetchCartItems() {
+            try {
+                const response = await fetch("http://localhost:5000/cart");
+                const cartItems = await response.json();
+
+                const cartTableBody = document.getElementById('cartItems');
+                cartTableBody.innerHTML = ''; 
+                cartItems.forEach(item => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.name}</td>
+                        <td>$${item.price}</td>
+                        <td>${item.category}</td>
+                        <td><img src="${item.url}" alt="${item.name}" width="50" height="50"></td>
+                        <td>${item.userRating || 'N/A'}</td>
+                        <td>${item.giftType || 'N/A'}</td>
+                        <td class="center">${item.quantity}</td>
+                        <td class="center">
+                            <button class="delete-btn" onclick="deleteCartItem('${item._id}')">Delete</button>
+                        </td>
+                    `;
+                    cartTableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Error fetching cart items:", error);
+            }
+        }
+
+        // Function to delete a cart item
+        async function deleteCartItem(itemId) {
+            if (confirm("Are you sure you want to delete this item?")) {
+                try {
+                    const response = await fetch(`http://localhost:5000/cart/${itemId}`, {
+                        method: 'DELETE',
+                    });
+
+                    if (response.ok) {
+                        alert('Item deleted successfully');
+                        fetchCartItems(); // Refresh the cart items
+                    } else {
+                        const errorData = await response.json();
+                        console.error("Error deleting item:", errorData);
+                       
+                    }
+                } catch (error) {
+                    console.error("Error deleting item:", error);
+                }
+            }
+        }
+
+        // Call the function to fetch cart items when the page loads
+        fetchCartItems();
+    </script>
+</body>
+</html>

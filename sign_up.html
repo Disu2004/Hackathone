@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Sign Up</title>
+    <link href="./CSS/sign_up.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="card-switch">
+            <label class="switch">
+                <input type="checkbox" class="toggle">
+                <span class="slider"></span>
+                <span class="card-side"></span>
+                <div class="flip-card__inner">
+                    <div class="flip-card__front">
+                        <div class="title">Log in</div>
+                        <form class="flip-card__form" id="loginForm" action="">
+                            <input class="flip-card__input" name="email" placeholder="Email" type="email" required>
+                            <input class="flip-card__input" name="password" placeholder="Password" type="password" required>
+                           <a href="index.html"> <button class="flip-card__btn">Let's go!</button></a>
+                        </form>
+                    </div>
+                    <div class="flip-card__back">
+                        <div class="title">Sign up</div>
+                        <form class="flip-card__form" id="signupForm" action="">
+                            <input class="flip-card__input" id="name" placeholder="Name" type="text" required>
+                            <input class="flip-card__input" id="mobile" placeholder="Mobile" type="tel" required>
+                            <input class="flip-card__input" name="password" placeholder="Password" type="password" required>
+
+                            <a href="index.html"> <button class="flip-card__btn">Confirm!</button></a>
+                        </form>
+                    </div>
+                </div>
+            </label>
+        </div>   
+    </div>
+
+    <script>
+      
+        // Animation for label when focused or blurred
+        const labels = document.querySelectorAll('.flip-card__form input');
+
+        labels.forEach(label => {
+            label.addEventListener('focus', function () {
+                this.previousElementSibling.style.transform = 'translateY(-20px) scale(0.8)';
+            });
+
+            label.addEventListener('blur', function () {
+                if (!this.value) {
+                    this.previousElementSibling.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
